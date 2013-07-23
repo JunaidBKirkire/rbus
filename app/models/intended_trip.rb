@@ -30,7 +30,7 @@ class IntendedTrip
     t = distance(:to)
     trips_with_distance.where{(f + t <= meters)}.exclude(:id => self.id).all
   end
- 
+
   # Public: gets the nearest trips, sorted by a given order
   # params     ->  a Hash with keys for limit and offset. Defaults to {:limit => 20, :offset => 0}
   # sort_order -> one of :from, :to or :total, specifying whether to sort on distance at start, distance at end or total distance. Defaults to :total
@@ -38,9 +38,9 @@ class IntendedTrip
     params = {:limit => 100, :offset => 0}.merge(params)
     sorted_trips = trips_with_distance.order(distance(:from) + distance(:to))
     sorted_trips.map{|t| {
-        :trip => IntendedTrip.get(t[:id]), 
-        :start_distance => t[:fdist], 
-        :end_distance => t[:tdist], 
+        :trip => IntendedTrip.get(t[:id]),
+        :start_distance => t[:fdist],
+        :end_distance => t[:tdist],
         :total_distance => t[:fdist] + t[:tdist]
       } unless t[:id] == self.id}.compact.select{|x| x[:trip]}
   end
@@ -80,7 +80,7 @@ class IntendedTrip
 
   # Returns all the other trips in the database with their fdist and tdist calculated
   def trips_with_distance
-    DB[:intended_trips].select(:id, :from_name, :to_name, 
+    DB[:intended_trips].select(:id, :from_name, :to_name,
                                :from_lat, :from_lng,
                                :to_lat, :to_lng,
                                distance(:from).as(:fdist),
@@ -91,11 +91,13 @@ class IntendedTrip
   # Returns a Sequel.function to calculate the distance between a trip and all other trips
   def distance(what)
     lat, lng = "#{what}_lat".to_sym, "#{what}_lng".to_sym
-    Sequel.function(:earth_distance, 
+    Sequel.function(:earth_distance,
                     Sequel.function(:ll_to_earth, self.send(lat), self.send(lng)),
                     Sequel.function(:ll_to_earth, lat, lng)
                     )
   end
 
-  
+
+
+
 end

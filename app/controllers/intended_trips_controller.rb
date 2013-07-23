@@ -1,9 +1,9 @@
 class IntendedTripsController < ApplicationController
   # GET /intended_trips
   # GET /intended_trips.json
-  
+
   load_and_authorize_resource
-  
+
   def index
     @intended_trips = IntendedTrip.filter(params)
     respond_to do |format|
@@ -72,6 +72,7 @@ class IntendedTripsController < ApplicationController
     if (current_ability.can?(:manage, @intended_trip_creator.trip)) || !current_user
       respond_to do |format|
         if @intended_trip_creator.save
+          AdminMailer.notify(@intended_trip_creator.trip).deliver
           msg =  'Thanks for registering your commute'
           msg += "We've just sent you and email. Kindly confirm your email address by clicking on the confirm link in it." if @new_user
           format.html { redirect_to @intended_trip_creator.trip, notice: msg }

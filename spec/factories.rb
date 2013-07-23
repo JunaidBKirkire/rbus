@@ -21,7 +21,7 @@ FactoryGirl.define do
   factory :user do
     email     { generate :email }
     password "s3cr3t"
-
+    password_confirmation "s3cr3t"
     factory :admin_user do
       role "admin"
     end
@@ -36,6 +36,6 @@ FactoryGirl.define do
     to_lat      0
     to_lng      0
     association :user
-    
+
   end
 end

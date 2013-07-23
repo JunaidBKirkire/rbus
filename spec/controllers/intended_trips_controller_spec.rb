@@ -35,10 +35,10 @@ describe IntendedTripsController do
           post :create, @valid_user_params
         }.to change(IntendedTrip, :count).by(1)
       end
-      it "should send confirmation email" do
+      it "should send confirmation email and notify admin" do
         expect {
           post :create, @valid_user_params
-        }.to change(ActionMailer::Base.deliveries, :count).by(1)
+        }.to change(ActionMailer::Base.deliveries, :count).by(2)
       end
     end
 
