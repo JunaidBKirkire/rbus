@@ -8,8 +8,6 @@ class IntendedTripsController < ApplicationController
     @intended_trips = IntendedTrip.filter(params)
     respond_to do |format|
       format.html {
-        (render :map and return) if params[:map]
-        (render :filter and return) if (params[:from] || params[:to] || params[:filter])
         render
       }
       format.json { render json: @intended_trips}
