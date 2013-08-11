@@ -1,3 +1,17 @@
+%script{:type => "text/javascript" , :src => "http://maps.googleapis.com/maps/api/js?key=#{Yetting.maps}&sensor=false"}
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
+:javascript
+  $(document).ready(function() {
+    if ($('#map').length == 1) {
+      map = new google.maps.Map(document.getElementById("map"), { mapTypeId: google.maps.MapTypeId.ROADMAP, center: new google.maps.LatLng(19.09, 72.91), zoom: 11 });
+      infowindow = new google.maps.InfoWindow();
+      marker = new google.maps.Marker({
+        map: map
+      });
+    }
+  });
+
 %div{:style => "line-height: 1.2em"}
   %h2
     %span.bigger.highlight
@@ -8,5 +22,10 @@
   - if can?(:edit, @intended_trip)
     = link_to 'Edit', edit_intended_trip_path(@intended_trip), :class => "btn btn-info"
 
-= render 'intended_trips/nearest_list'
+%br
 
+.row
+  .span6
+    = render 'intended_trips/nearest_list'
+  .span6
+    %div#map{:style => "width: 100%; height: 500px"}

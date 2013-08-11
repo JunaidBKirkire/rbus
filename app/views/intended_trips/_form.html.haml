@@ -5,13 +5,13 @@
 :javascript
   $(document).ready(function() {
     x = 0; y = 0;
-    $('#from').keypress(function(e) { 
+    $('#from').keypress(function(e) {
       if ((e.which > 0) && (e.which != 13) ){
         $('#intended_trip_from_lat').attr('value','')
         $('#intended_trip_from_lng').attr('value','')
       }
     });
-    $('#to').keypress(function(e) { 
+    $('#to').keypress(function(e) {
       if ((e.which > 0) && (e.which != 13) ){
         $('#intended_trip_to_lat').attr('value','')
         $('#intended_trip_to_lng').attr('value','')
@@ -36,7 +36,7 @@
       types: ['establishment','geocode'],
       componentRestrictions: {country: 'in'}
     };
-  
+
     from_autocomplete = new google.maps.places.Autocomplete(from_input, options);
     to_autocomplete = new google.maps.places.Autocomplete(to_input, options);
 
@@ -126,4 +126,3 @@
         = u.text_field :password_confirmation, :placeholder => "please type your password again", :type => "password", :value => (params[:intended_trip][:user][:password_confirmation] rescue nil)
         %br
     = f.submit "Register my Trip", :class => "btn btn-info"
-  

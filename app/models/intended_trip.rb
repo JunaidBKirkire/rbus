@@ -16,6 +16,9 @@ class IntendedTrip
   property :type, String
 
   belongs_to :user
+  has 1, :trip_stats, :constraint => :destroy
+
+  after :save, :update_trip_stats
 
   property :created_at, DateTime
   property :updated_at, DateTime
@@ -97,7 +100,9 @@ class IntendedTrip
                     )
   end
 
-
+  def update_trip_stats
+    TripStats.update_for(self)
+  end
 
 
 end

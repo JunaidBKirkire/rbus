@@ -59,5 +59,18 @@ describe IntendedTrip do
 
   end
 
+  it "should save trip stats" do
+    IntendedTrip.all.destroy!
+    @t1 = FactoryGirl.build(:intended_trip).tap{|t| t.save }
+    @t1.trip_stats.should be_a TripStats
+    @t1.trip_stats.trips_within_2_km.should == 0
+    @t2 = FactoryGirl.build(:intended_trip).tap{|t| t.save }
+    @t1.reload.trip_stats.trips_within_2_km.should == 1
+    @t2.trip_stats.trips_within_2_km.should == 1
+  end
+
+
+
+
 
 end
