@@ -60,12 +60,4 @@ describe IntendedTrip do
   end
 
 
-  describe "notification" do
-
-    it "should notify" do
-      @trip = FactoryGirl.build(:intended_trip)
-      expect { @trip.save }.to change(ActionMailer::Base.deliveries, :count).by(1)
-    end
-  end
-
 end
