@@ -1,4 +1,4 @@
-= #{@trip.user.email} from #{@trip.from_name} to #{@trip.to_name}
 
+= link_to "#{@trip.user.email} from #{@trip.from_name} to #{@trip.to_name}", @trip
 
-= #{@trip.inspect}
+= @trip.inspect
