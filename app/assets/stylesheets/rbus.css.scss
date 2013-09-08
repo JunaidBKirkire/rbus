@@ -9,7 +9,7 @@ html, body {
 
 h1 {
   margin-bottom: 5px;
-  font-family: 'Play', Helvetica;
+  font-family: Georgia, 'Play', Helvetica;
 }
 
 .navbar {
@@ -31,23 +31,19 @@ h1 {
   color: black;
 }
 
-html {
- height: 100%;
-}
 body {
-  //background: #7bc7df url(/assets/sky_bg.jpg) no-repeat left top;
-  background-size: 100%;
-
+ background: url(/assets/sky_bg.jpg) no-repeat center center fixed;
+ background-size: cover;
 }
-  
+
 #headline {
-  font-family: 'Fredoka One';  
+  font-family: 'Fredoka One';
   padding-top: 1em;
   h1 {
       font-size: 3em;
       font-weight: normal;
   }
-  h2 { 
+  h2 {
     font-size: 2em;
     line-height: 1em;
     margin: 10px 0px;
@@ -63,11 +59,6 @@ body {
       font-weight: bolder;
       font-size: 1.2em;
     }
-  }
-}
-
-#new_form {
-  form {
   }
 }
 
@@ -142,20 +133,21 @@ ul.thumbnails {
 
 #pricing {
   font-size: 1.5em;
-  line-height: 1.1em;
   .highlight {
     color: blue;
   }
 }
 
-.faq {
+#faq {
   font-size: 1.5em;
-  line-height: 1.1em;
-  margin: 20px;
-  ul {
-    font-size: 0.9em;
-    line-height: 1.1em;
-  }		
+  line-height: 1.5em;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  background: rgba(196,226,235,0.5);;
+  li {
+    line-height: 1.5em;
+  }
 }
 
 ul.ui-autocomplete {
@@ -164,7 +156,9 @@ ul.ui-autocomplete {
 }
 
 #wrap {
-  min-height:100%;
+  height: auto !important;
+  min-height:94%;
+  margin: 0 auto -150px;
 }
 
 #main {
@@ -175,10 +169,24 @@ ul.ui-autocomplete {
 .footer {
   position: relative;
   margin-top: -150px; /* negative value of footer height */
-  height: 150px;
+  height: 100px;
   clear:both;
-  color:#fff;
-} 
+  padding: 20px;
+  font-size: 1.2em;
+  background: rgba(75,123,143,0.6);
+  color: white;
+  img {
+    border-radius: 50px;
+  }
+  a {
+    color: lightblue;
+  }
+  h1,h2,h3 {
+    font-family: "Shadows Into Light";
+    margin-bottom: 3px;
+    font-weight: normal;
+  }
+}
 
 .map {
   border-radius: 10px;
@@ -186,7 +194,7 @@ ul.ui-autocomplete {
   img {
     max-width: none;
   }
-}   
+}
 
 #map {
   border-radius: 10px;
@@ -194,7 +202,7 @@ ul.ui-autocomplete {
   img {
     max-width: none;
   }
-}   
+}
 
 
 #demo2_map {
@@ -203,7 +211,7 @@ ul.ui-autocomplete {
   img {
     max-width: none;
   }
-}   
+}
 
 .green {
   color: green;
@@ -222,11 +230,18 @@ ul.ui-autocomplete {
 table#pricing {
   background: #fcfcfc;
   font-size: 1em;
-  border-radius: 5px;
-  th {
-    font-size: 1.4em;
-    background: lightyellow;
-    font-weight: normal;
+  border-radius: 10px;
+  thead {
+    th {
+      border-radius: 10px;
+      font-size: 1.4em;
+      background: lightyellow;
+      font-weight: normal;
+    }
   }
   box-shadow: 2px 2px 4px #ccc;
+}
+
+#content {
+  line-height: 2em;
 }

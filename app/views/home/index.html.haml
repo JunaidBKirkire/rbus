@@ -9,7 +9,7 @@
     }(document, 'script', 'facebook-jssdk'));</script>
 
 
-.row{:style => "margin-bottom: 20px"}
+.row{:style => "margin-bottom: 0px"}
   .span4#headline
     %h1 Mumbai,
     %h2
@@ -25,7 +25,7 @@
       %span.highlight flexible timings
       &amp;
       %span.highlight your level of luxury.
-    .well{:style => "padding: 5px; margin-top: 15px"}
+    %div{:style => "padding: 5px; margin-top: 15px"}
       As seen in
       %br
       %a{:href => "http://www.pluggd.in/rbus-attempts-to-reduce-traffic-in-mumbai-by-creating-buspools-297/", :target => "_blank"}
@@ -46,7 +46,6 @@
     :plain
       <a class="twitter-timeline" href="https://twitter.com/rbus_in" data-widget-id="376572078842863616">Tweets by @rbus_in</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    <div class="fb-like" data-href="http://rbus.in" data-send="true" data-width="300" data-show-faces="false" style="margin-top: 10px"></div>
     <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out rBus.in - stress free commutes for Mumbai" data-via="rbus_in" data-size="large">Tweet</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
@@ -102,7 +101,7 @@
           %th comfort
           %th safety
       %tr
-        %td BEST
+        %th BEST
         %td 600
         %td
           - 2.times do |i|
@@ -113,7 +112,7 @@
             = image_tag('smiley.png')
 
       %tr
-        %td train + rickshaw
+        %th train + rickshaw
         %td 1000
         %td
           - 2.times do |i|
@@ -122,7 +121,7 @@
           - 1.times do |i|
             = image_tag('saddey.png')
       %tr
-        %td motorcycle
+        %th motorcycle
         %td 1500
         %td
           - 3.times do |i|
@@ -131,7 +130,7 @@
           - 3.times do |i|
             = image_tag('saddey.png')
       %tr.yellow-gradient
-        %td rBus non-a/c
+        %th rBus non-a/c
         %td 2000
         %td
           - 2.times do |i|
@@ -141,7 +140,7 @@
             = image_tag('smiley.png')
 
       %tr.yellow-gradient
-        %td rBus a/c
+        %th rBus a/c
         %td 3000
         %td
           - 3.times do |i|
@@ -151,7 +150,7 @@
             = image_tag('smiley.png')
 
       %tr
-        %td rickshaw
+        %th rickshaw
         %td 3000
         %td
           - 2.times do |i|
@@ -162,7 +161,7 @@
             = image_tag('saddey.png')
 
       %tr
-        %td self driven car
+        %th self driven car
         %td 12000
         %td
           - 2.times do |i|
@@ -172,7 +171,7 @@
             = image_tag('smiley.png')
 
       %tr
-        %td chauffeur-driven car
+        %th chauffeur-driven car
         %td 20000
         %td
           - 3.times do |i|
@@ -184,28 +183,12 @@
 
 .row
   %h1 frequently asked questions
-  .faq
+  #faq
     %h3 How does it work, exactly?
     rBus works very simply. First, we gather the commute details of people. Then, when we find enough of them going from the same place to the same place, we
     start running buses between those points. If we find say 200 people, it means we can run 10 twenty-seater buses on that route, which gives you ample
     flexibility in terms of timings. We wire up the buses with GPS and voila - your personal public transport system!
     %h3 Can we have rBus in my city?
-    rBus is currently operational only in Mumbai as that's where I live. However, if you wish to start an rBus service in your city I will provide the
-    software to manage the service there. You will have to run it under your own brand name (not rBus) and you can pay me something for the
-    software platform.  Get in touch if you'd like to provide a similar service where you live. I will provide
-    %ul
-      %li The software to manage user accounts, preferences etc.
-      %li Payment gateway
-      %li GPS, ticketing and related technology
-      %li Complaints system
-      %li Routing algorithms, etc.
-    and anything else to do with technology required to run this service effeciently
-
-    Get in touch using the feedback form above.
-  .faq
-    %h3 Who are you?
-    My name is Siddharth and I'm a naturalised Mumbaikar. You can find me on twitter at
-    = link_to "@_svs_", "http://twitter.com/@_svs_", :target => "_blank"
-  .faq
-    %h3 Great idea! How can I help?
-    Get in touch! I need all the help I can get. There's a feedback link in the menu bar on the top.
+    rBus is Open Source.
+    %a{:href => "http://github.com/svs/rbus"} Go for it!
+    Please! Someone fix Mumbai traffic!!
