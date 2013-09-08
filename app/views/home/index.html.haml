@@ -11,14 +11,14 @@
 
 .row{:style => "margin-bottom: 20px"}
   .span4#headline
-    %h1 Mumbai,   
+    %h1 Mumbai,
     %h2
       Stress free commutes are here
       %span.highlight
         from Rs.1800 only!
     %h3
       Simply leave us your commute details and we'll arrange for you a
-      %span.highlight point-to-point 
+      %span.highlight point-to-point
       bus with
       %span.highlight guaranteed seating
       ,
@@ -44,40 +44,14 @@
   .span3
     <div style="margin-top: 1.5em;">&nbsp;</div>
     :plain
-      <script charset="utf8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-      <script>
-      new TWTR.Widget({
-      version: 2,
-      type: 'profile',
-      rpp: 4,
-      interval: 30000,
-      width: 300,
-      height: 300,
-      theme: {
-      shell: {
-      background: '#d8f1f6',
-      color: '#030303'
-      },
-      tweets: {
-      background: '#bce7f5',
-      color: '#0f0e0f',
-      links: '#1e1ee6'
-      }
-      },
-      features: {
-      scrollbar: false,
-      loop: false,
-      live: false,
-      behavior: 'all'
-      }
-      }).render().setUser('rbus_in').start();
-      </script>
+      <a class="twitter-timeline" href="https://twitter.com/rbus_in" data-widget-id="376572078842863616">Tweets by @rbus_in</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     <div class="fb-like" data-href="http://rbus.in" data-send="true" data-width="300" data-show-faces="false" style="margin-top: 10px"></div>
     <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out rBus.in - stress free commutes for Mumbai" data-via="rbus_in" data-size="large">Tweet</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 
-      
+
 .row{:style => "position: relative; top: 50px; margin-bottom: 50px;"}
   %ul.thumbnails
     %li.span4
@@ -98,27 +72,27 @@
 
 .row#pricing
   %h1 plans and pricing
-  Commuter plans start from monthly payment of 
+  Commuter plans start from monthly payment of
   %span.highlight
-    Rs. 1800 for trips less than 20km (round trip) 
-  going up to 
+    Rs. 1800 for trips less than 20km (round trip)
+  going up to
   %span.highlight
     Rs. 4000 for 80 km (round trip)
-  commute for 
+  commute for
   %span.highlight
-    non a/c bus. 
-  For a/c, the rates are 
+    non a/c bus.
+  For a/c, the rates are
   %span.highlight
-    Rs. 2800 
-  and 
+    Rs. 2800
+  and
   %span.highlight
-    Rs. 7000 
+    Rs. 7000
   respectively.
   %span.highlight
     More people sign up, cheaper it gets!
 
 
-  %p 
+  %p
     %h2 See how our pricing compares with other modes of transport
     %table.table#pricing
       %thead
@@ -141,7 +115,7 @@
       %tr
         %td train + rickshaw
         %td 1000
-        %td 
+        %td
           - 2.times do |i|
             = image_tag('saddey.png')
         %td
@@ -206,18 +180,18 @@
         %td
           - 2.times do |i|
             = image_tag('smiley.png')
-  
-  
+
+
 .row
   %h1 frequently asked questions
   .faq
     %h3 How does it work, exactly?
-    rBus works very simply. First, we gather the commute details of people. Then, when we find enough of them going from the same place to the same place, we 
+    rBus works very simply. First, we gather the commute details of people. Then, when we find enough of them going from the same place to the same place, we
     start running buses between those points. If we find say 200 people, it means we can run 10 twenty-seater buses on that route, which gives you ample
     flexibility in terms of timings. We wire up the buses with GPS and voila - your personal public transport system!
     %h3 Can we have rBus in my city?
-    rBus is currently operational only in Mumbai as that's where I live. However, if you wish to start an rBus service in your city I will provide the 
-    software to manage the service there. You will have to run it under your own brand name (not rBus) and you can pay me something for the 
+    rBus is currently operational only in Mumbai as that's where I live. However, if you wish to start an rBus service in your city I will provide the
+    software to manage the service there. You will have to run it under your own brand name (not rBus) and you can pay me something for the
     software platform.  Get in touch if you'd like to provide a similar service where you live. I will provide
     %ul
       %li The software to manage user accounts, preferences etc.
@@ -226,20 +200,12 @@
       %li Complaints system
       %li Routing algorithms, etc.
     and anything else to do with technology required to run this service effeciently
-    
+
     Get in touch using the feedback form above.
   .faq
     %h3 Who are you?
-    My name is Siddharth and I'm a naturalised Mumbaikar. You can find me on twitter at 
+    My name is Siddharth and I'm a naturalised Mumbaikar. You can find me on twitter at
     = link_to "@_svs_", "http://twitter.com/@_svs_", :target => "_blank"
   .faq
     %h3 Great idea! How can I help?
     Get in touch! I need all the help I can get. There's a feedback link in the menu bar on the top.
-        
-          
-        
-          
-          
-  
-            
-  
