@@ -9,7 +9,7 @@ Current forms of urban mobility are either uncomfortable, expensive or unsafe. O
 
 ## Design Decisions
 
-It would be worthwhile to conider some of the design decisions that were taken while building rBus so as to better understand the intent of the code. rBus is entirely commuter focussed.
+It would be worthwhile to consider some of the design decisions that were taken while building rBus so as to better understand the intent of the code. rBus is entirely commuter focussed.
 It's main use case is intended for commuters - i.e. people who go from point A to B in the "morning" and return in the "evening". It is not intended to serve as an ad-hoc ridesharing platform. Our intention is to build out a core backbone of daily use on which spare capacity can easily be deployed towards ad-hoc trips. For now, the intention is to keep the operations simple and the service reliable. Therefore, in the first iteration, we intend to provide a point to point service. i.e. buses going from Malad to Bandra Kurla Complex will not stop to pick up commuters in Andheri East.
 
 The purpose of this app is to collect commuter data and organise them into shared routes. For now it is a very simple app designed to bootstrap rBus like businesses quickly. Later, we would need to build out the resource allocation and scheduling parts of the application.
@@ -19,12 +19,26 @@ The purpose of this app is to collect commuter data and organise them into share
 Set up the database
 
 ```
+You would need to install PostgreSQL first.
+
+While installing PostgreSQL, do remember to install Server Instrumentation for the necessary extensions.
+
+Create a PostgreSQL user mentioned in the config/database.yml.
+
+Do not create the database yet.  After you run the bundler (described below), execute the rake command as shown.
+
+```
+
+```
 rake db:create db:migrate db:automigrate
 rake db:create db:migrate db:automigrate RAILS_ENV=test
 ```
 
 Download dependencies
 ```
+
+You would also need to install Qt and a Javascript runtime like Node.js before you run the below command.
+
 bundle install
 ```
 
