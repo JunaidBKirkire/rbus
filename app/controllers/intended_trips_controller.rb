@@ -71,8 +71,10 @@ class IntendedTripsController < ApplicationController
     @intended_trip = @intended_trip_creator.trip
     if (current_ability.can?(:manage, @intended_trip_creator.trip)) || !current_user
       respond_to do |format|
-        if @intended_trip_creator.save
+        new_trip = @intended_trip_creator.save
+        if new_trip          
           AdminMailer.notify(@intended_trip_creator.trip).deliver
+          @intended_trip.similiar_trips( new_trip )
           msg =  'Thanks for registering your commute'
           msg += "We've just sent you and email. Kindly confirm your email address by clicking on the confirm link in it." if @new_user
           format.html { redirect_to @intended_trip_creator.trip, notice: msg }
@@ -94,7 +96,7 @@ class IntendedTripsController < ApplicationController
   # PUT /intended_trips/1.json
   def update
     @intended_trip = IntendedTrip.get(params[:id])
-
+    @intended_trip.similiar_trips( @intended_trip )
     respond_to do |format|
       if @intended_trip.save
         format.html { redirect_to @intended_trip, notice: 'Your trip has been updated.' }

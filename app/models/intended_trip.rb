@@ -1,5 +1,4 @@
 class IntendedTrip
-
   include DataMapper::Resource
   property :id, Serial
 
@@ -20,6 +19,7 @@ class IntendedTrip
   property :created_at, DateTime
   property :updated_at, DateTime
   property :deleted_at, ParanoidDateTime
+
 
   # accepts_nested_attributes_for :user
 
@@ -44,7 +44,6 @@ class IntendedTrip
         :total_distance => t[:fdist] + t[:tdist]
       } unless t[:id] == self.id}.compact.select{|x| x[:trip]}
   end
-
 
 
   # Public: return trips that match the given lat/lng filters
@@ -75,6 +74,22 @@ class IntendedTrip
     "[#{id}: from #{from_name}(#{from_lat},#{from_lng}) to #{to_name}(#{to_lat},#{to_lng}) on #{on}]"
   end
 
+  # Returns similiar trips to the trip being passed. We only select those trips whose start, end points are within kilometre of the
+  # start and end points of the trip being passed.
+  def similiar_trips( new_trip )
+    similiar_trips = DB[ :intended_trips ].
+        select(
+                Sequel.as( new_trip[ :id ], "trip_id" ),
+                Sequel.as( :id, "other_trip_id" ),
+                Sequel.as( Sequel.lit( "(? <@> ?)*1609", Sequel.function( :POINT, new_trip[ :from_lng ], new_trip[ :from_lat ]), Sequel.function( :POINT, :from_lng, :from_lat ) ), "start_dist" ),
+                Sequel.as( Sequel.lit( "(? <@> ?)*1609", Sequel.function( :POINT, new_trip[ :to_lng ], new_trip[ :to_lat ]), Sequel.function( :POINT, :to_lng, :to_lat ) ), "to_dist" )
+        ).
+        where("earth_box( ll_to_earth( #{new_trip[ :from_lat ]}, #{new_trip[ :from_lng ]} ), 1000 ) @> ll_to_earth( from_lat, from_lng ) and earth_box( ll_to_earth(#{new_trip[ :to_lat ]}, #{new_trip[ :to_lng ]}), 1000  ) @> ll_to_earth( to_lat, to_lng )").exclude( :id => new_trip[ :id ])
+
+  DB[ :similiar_trips ].where( :trip_id => new_trip[ :id ] ).delete
+  DB[ :similiar_trips ].import( [ :trip_id, :other_trip_id, :start_distance, :end_distance] , similiar_trips)
+    
+  end
 
   private
 
@@ -96,8 +111,6 @@ class IntendedTrip
                     Sequel.function(:ll_to_earth, lat, lng)
                     )
   end
-
-
 
 
 end
